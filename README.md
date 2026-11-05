@@ -1,8 +1,29 @@
 # Dystrophin-IHF-Quantification
 
-**Status: repository preparation / work in progress.** The repository is **not yet a validated end-to-end reproducible release**. In particular, the trained Cellpose3 model, QuPath tissue pixel classifier, and final threshold provenance must be added or verified before the authors describe the package as complete.
+**Status: Analysis scripts and trained models deposited.** The original QuPath tissue pixel classifier, trained Cellpose3 model and analysis scripts are available in this repository. End-to-end validation and some methodological details remain to be verified.
 
 Companion code for the immunohistofluorescence (IHF) analysis in the manuscript *Simple Western outperforms western blot and mass spectrometry for micro-dystrophin detection in AAV-treated Duchenne Muscular Dystrophy model* (Buscara et al.; manuscript under review).
+
+## Resources available for peer review
+
+The original analysis scripts and trained models are provided here:
+
+| Resource | File | Description |
+|---|---|---|
+| QuPath analysis | [Groovy script](qupath/scripts/Script_Segmentation_Quantification_PaperWB.groovy) | Tissue identification and fluorescence quantification |
+| QuPath classifier | [Class_Contour_GNT005.json](qupath/classifiers/pixel_classifiers/Class_Contour_GNT005.json) | Trained tissue pixel classifier |
+| QuPath classes | [classes.json](qupath/classifiers/classes.json) | Class definitions |
+| Cellpose3 model | [CP_20250221_112005_V3](cellpose3/models/CP_20250221_112005_V3) | Trained myofiber segmentation model |
+| R analysis | [R script](R/scripts/Intensity_processing_script_to_pdpf.R) | Postprocessing and PDPF calculation |
+
+### Installation
+
+Place the QuPath classifier in the project's
+`classifiers/pixel_classifiers/` folder and the Cellpose3
+model in the project's `CP_model/` folder.
+
+The original scripts remain unchanged. See
+`docs/RELEASE_CHECKLIST.md` for remaining validation items.
 
 ## Workflow covered by the provided source code
 
@@ -20,8 +41,8 @@ The original R code filters `membrane_Centro` and `membrane_Normale`; these are 
 
 - `qupath/scripts/Script_Segmentation_Quantification_PaperWB.groovy` — original Groovy script, unchanged.
 - `R/scripts/Intensity_processing_script_to_pdpf.R` — original R script, unchanged; contains local Windows project paths and historical class names.
-- `qupath/classifiers/README.md` — instructions for depositing the required QuPath classifier.
-- `cellpose3/models/README.md` — instructions for depositing the trained Cellpose model.
+- `qupath/classifiers/` — trained pixel classifier and QuPath class definitions.
+- `cellpose3/models/` — original trained Cellpose3 model and documentation.
 - `docs/RELEASE_CHECKLIST.md` — items to address before a public, citable release.
 - `docs/REVIEWER_RESPONSE_DRAFT.md` — manuscript/reviewer response drafts; only claim availability after the repository is made public and complete.
 
